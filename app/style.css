@@ -1,0 +1,176 @@
+/* Friday Finder - original styles for the Black Friday / Cyber Monday deal finder.
+   No external fonts, images or resources: everything is drawn with CSS only. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font: 16px/1.5 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2937;
+  background: #f7f5f0;
+}
+.site-header {
+  background: #2d3a3a;
+  color: #fff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 4px solid #b84a1a;
+}
+.brand { font-weight: 800; font-size: 20px; letter-spacing: 0.06em; }
+.brand-accent { color: #f5a623; }
+.site-header a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.95;
+  font-weight: 600;
+}
+.site-header a:hover { opacity: 1; text-decoration: underline; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 90px; }
+.list-intro { font-size: 18px; font-weight: 700; color: #374151; margin: 0 0 12px; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: end;
+  background: #ffffff;
+  border: 1px solid #d8d4c8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.toolbar label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #5b6b6b;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.toolbar input, .toolbar select {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid #c4bda8;
+  border-radius: 6px;
+  background: #fff;
+  min-width: 140px;
+}
+.toolbar input:focus, .toolbar select:focus {
+  outline: 2px solid #b84a1a;
+  border-color: transparent;
+}
+
+.deal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.deal-card {
+  background: #fff;
+  border: 1px solid #d8d4c8;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.deal-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -6px rgba(30, 36, 40, 0.12); }
+.deal-thumb {
+  height: 110px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e7dccf 0%, #d8c9af 100%);
+  border: 1px dashed #c9bda0;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.deal-thumb::after {
+  content: 'SALE';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font: bold 10px/1 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0.08em;
+  background: #b84a1a;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+.deal-title { font-size: 14.5px; font-weight: 700; margin: 0 0 6px; color: #1f2937; line-height: 1.35; }
+.deal-meta { font-size: 11.5px; color: #7a8787; margin: 0 0 8px; display: flex; gap: 6px; align-items: center; }
+.deal-price { margin: 0 0 8px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.deal-sale { font: bold 19px/1 'Segoe UI', Roboto, Arial, sans-serif; color: #b84a1a; }
+.deal-was { font-size: 13px; color: #9aa3a3; text-decoration: line-through; }
+.deal-off {
+  font-size: 12px; font-weight: 800; color: #2e7d32;
+  background: #eaf4ec; border: 1px solid #b9dcbf; border-radius: 4px;
+  padding: 1px 6px; margin-left: auto;
+}
+.deal-verdict { margin: 0 0 6px; }
+.verdict-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #fff;
+}
+.verdict-strong { background: #1e7a3c; }
+.verdict-routine { background: #c77f1a; }
+.verdict-modest { background: #8a7a5c; }
+.deal-evidence { font-size: 12px; color: #5b6b6b; margin: 0 0 10px; line-height: 1.4; }
+.deal-link { margin-top: auto; }
+.deal-link a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2d5a6a;
+  text-decoration: none;
+}
+.deal-link a:hover { text-decoration: underline; color: #1f424f; }
+
+footer {
+  border-top: 1px solid #d8d4c8;
+  padding: 22px 16px;
+  text-align: center;
+  color: #7a8787;
+  font-size: 13px;
+}
+
+/* Detail view (hash route #/deal/<id>) */
+.detail { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 10px; }
+.detail-thumb {
+  height: 220px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e7dccf 0%, #d8c9af 100%);
+  border: 1px dashed #c9bda0;
+}
+.detail-info h1 { font-size: 26px; margin: 0 0 10px; line-height: 1.25; }
+.detail-meta { font-size: 14px; color: #5b6b6b; margin: 4px 0; }
+.detail-price { font-size: 24px; font-weight: 800; color: #b84a1a; margin: 10px 0; }
+.detail-price .deal-was { font-size: 16px; font-weight: 600; color: #9aa3a3; }
+.detail-price .deal-off { font-size: 15px; color: #1e7a3c; }
+.detail-verdict { font-size: 14.5px; color: #374151; margin: 8px 0; }
+.detail-link { margin: 10px 0; }
+.detail-link a { font-size: 15px; font-weight: 700; color: #2d5a6a; text-decoration: none; }
+.detail-link a:hover { text-decoration: underline; }
+.detail-checked, .detail-source { font-size: 13px; color: #7a8787; margin: 4px 0; }
+.detail-back a { color: #b84a1a; text-decoration: none; font-weight: 700; }
+.detail-back a:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .deal-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+@media (max-width: 600px) {
+  .deal-grid { grid-template-columns: 1fr; }
+  .toolbar { gap: 8px; padding: 12px 14px; }
+  .toolbar label { font-size: 12px; }
+  .toolbar input, .toolbar select { min-width: unset; width: 100%; }
+  body { font-size: 15px; }
+}
